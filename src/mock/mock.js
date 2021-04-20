@@ -10,6 +10,7 @@ Mock.mock('/api/data', {
       "rank|1-100":  100,//随机生成1-100的数字
       "stars|1-5": 5,//随机生成1-5的数字
       "nickname": "@cname",//随机生成中文名字
+      "img": Mock.Random.image('200X200',Mock.Random.color())
     }
 //data里的属性看不懂，需要详细看语法规范,博客链接:https://www.jianshu.com/p/4579f40e6108
 });

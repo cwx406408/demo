@@ -6,11 +6,10 @@
       <h2 slot="center">主页</h2>
       <img slot="right" src="~assets/img/navibar/forward.svg" alt="">
     </navibar>
-    <ol>
-      <li v-for="(value, key) in data" :key="key">
-        {{key}}:{{value}}
-      </li>
-    </ol>
+    <div>
+      <img :src="this.data.img" alt="">
+    </div>
+    
   </div>
 </template>
 <script>
@@ -25,14 +24,16 @@ export default {
     }
   },
   created() {
-    console.log('created');
+    //console.log('created');
     request({
       url: '/api/data'
     }).then((result) => {
       this.data = result.data
+      //console.log(this.data);
     }).catch((err) => {
       console.log(err);
     });
   }
 }
 </script>
+

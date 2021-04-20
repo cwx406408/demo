@@ -6,12 +6,33 @@
       <h2 slot="center">主页</h2>
       <img slot="right" src="~assets/img/navibar/forward.svg" alt="">
     </navibar>
+    <ol>
+      <li v-for="(value, key) in data" :key="key">
+        {{key}}:{{value}}
+      </li>
+    </ol>
   </div>
 </template>
 <script>
 import navibar from 'components/common/navibar/navibar.vue'
+import {request} from 'network/request.js'
 export default {
   components: { navibar },
-  name: 'home'
+  name: 'home',
+  data() {
+    return {
+      data: {}
+    }
+  },
+  created() {
+    console.log('created');
+    request({
+      url: '/api/data'
+    }).then((result) => {
+      this.data = result.data
+    }).catch((err) => {
+      console.log(err);
+    });
+  }
 }
 </script>
